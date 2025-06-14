@@ -1,4 +1,4 @@
-package model
+package define
 
 type Submit struct {
 	Language string `json:"language"` // 语言

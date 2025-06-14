@@ -3,11 +3,11 @@ package service
 import (
 	"fmt"
 
-	"go-openoj/internal/model"
+	"go-openoj/internal/define"
 	"go-openoj/internal/utils"
 )
 
-func ServiceSubmit(codedata model.Submit) (string, error) {
+func ServiceSubmit(codedata define.Submit) (string, error) {
 	// 保存源代码到数据库
 	req := utils.JudgeRequest{
 		Code:       codedata.Code,

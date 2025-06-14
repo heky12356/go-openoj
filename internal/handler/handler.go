@@ -5,14 +5,14 @@ import (
 	"log"
 	"net/http"
 
-	"go-openoj/internal/model"
+	"go-openoj/internal/define"
 	"go-openoj/internal/service"
 
 	"github.com/gin-gonic/gin"
 )
 
 func HandleSubmit(c *gin.Context) {
-	var codedata model.Submit
+	var codedata define.Submit
 	err := c.ShouldBind(&codedata)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": fmt.Sprintf("bind failed: %s", err)})
