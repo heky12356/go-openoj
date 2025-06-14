@@ -1,0 +1,6 @@
+package model
+
+type Submit struct {
+	Language string `json:"language"` // 语言
+	Code     string `json:"code"`     // 源代码
+}
