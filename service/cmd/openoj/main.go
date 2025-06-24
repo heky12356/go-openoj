@@ -6,7 +6,7 @@ import (
 	"go-openoj/internal/utils"
 )
 
-func main() {
+func Mmain() {
 	code := `
 #include <stdio.h>
 int main() {
@@ -20,8 +20,8 @@ int main() {
 		Code:       code,
 		Language:   "c",
 		TimeLimit:  1000,
-		InputFile:  "testdata/input.txt",
-		OutputFile: "testdata/output.txt",
+		InputFile:  "static/testdata/input.txt",
+		OutputFile: "static/testdata/output.txt",
 	}
 	result := utils.RunJudge(req)
 	fmt.Printf("Result: %s\nDetail: %s\n", result.Status, result.Message)
