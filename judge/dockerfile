@@ -1,0 +1,21 @@
+FROM golang:1.23
+
+RUN apt-get update && apt-get install -y curl 
+
+RUN mkdir -p /etc/apt/keyrings && \
+    curl https://www.ucw.cz/isolate/debian/signing-key.asc -o /etc/apt/keyrings/isolate.asc
+
+RUN echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/isolate.asc] http://www.ucw.cz/isolate/debian/ bookworm-isolate main" >> /etc/apt/sources.list
+
+RUN apt-get update && apt-get install -y \
+    build-essential isolate golang \
+    && apt-get clean
+
+RUN useradd -m judge
+WORKDIR /home/judge
+
+COPY . .
+RUN chown -R judge:judge .
+
+USER judge
+ENTRYPOINT ["go", "run", "cmd/main.go"]
