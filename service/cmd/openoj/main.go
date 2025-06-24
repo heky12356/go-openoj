@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"go-openoj/internal/utils"
+	"go-openoj/service/internal/utils"
 )
 
 func Mmain() {

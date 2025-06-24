@@ -3,7 +3,7 @@ package utils
 import (
 	"fmt"
 
-	"go-openoj/internal/config"
+	"go-openoj/service/internal/config"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"

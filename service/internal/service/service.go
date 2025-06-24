@@ -3,8 +3,8 @@ package service
 import (
 	"fmt"
 
-	"go-openoj/internal/define"
-	"go-openoj/internal/utils"
+	"go-openoj/service/internal/define"
+	"go-openoj/service/internal/utils"
 )
 
 func ServiceSubmit(codedata define.Submit) (string, error) {

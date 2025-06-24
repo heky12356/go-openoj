@@ -1,8 +1,8 @@
 package main
 
 import (
-	"go-openoj/internal/config"
-	"go-openoj/internal/router"
+	"go-openoj/service/internal/config"
+	"go-openoj/service/internal/router"
 )
 
 func main() {

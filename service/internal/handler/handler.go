@@ -5,8 +5,8 @@ import (
 	"log"
 	"net/http"
 
-	"go-openoj/internal/define"
-	"go-openoj/internal/service"
+	"go-openoj/service/internal/define"
+	"go-openoj/service/internal/service"
 
 	"github.com/gin-gonic/gin"
 )

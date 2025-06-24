@@ -1,7 +1,7 @@
 package router
 
 import (
-	"go-openoj/internal/handler"
+	"go-openoj/service/internal/handler"
 
 	"github.com/gin-gonic/gin"
 )
