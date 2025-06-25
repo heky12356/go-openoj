@@ -1,7 +1,7 @@
 package models
 
 import (
-	"go-openoj/internal/utils"
+	"go-openoj/service/internal/utils"
 
 	"gorm.io/gorm"
 )
