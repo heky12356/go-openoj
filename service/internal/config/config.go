@@ -1,6 +1,10 @@
 package config
 
-import "github.com/spf13/viper"
+import (
+	"fmt"
+
+	"github.com/spf13/viper"
+)
 
 type Config struct {
 	Server struct {
@@ -20,15 +24,14 @@ var config Config
 func init() {
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
-	viper.AddConfigPath("/config/")
+	viper.AddConfigPath("../../../config/")
 
 	if err := viper.ReadInConfig(); err != nil {
-		panic(err)
+		panic(fmt.Errorf("read config file error: %s \n", err))
 	}
 
-	var config Config
 	if err := viper.Unmarshal(&config); err != nil {
-		panic(err)
+		panic(fmt.Errorf("unmarshal config file error: %s \n", err))
 	}
 }
 
