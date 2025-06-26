@@ -11,7 +11,8 @@ import (
 )
 
 type submit struct {
-	Code string `json:"code"`
+	Code  string `json:"code"`
+	Stdin string `json:"stdin"`
 }
 
 func HandleSubmit(c *gin.Context) {
@@ -22,10 +23,10 @@ func HandleSubmit(c *gin.Context) {
 		return
 	}
 	log.Print(codedata)
-	resault, err := service.ServiceSubmit(codedata.Code)
+	resault, err := service.ServiceSubmit(codedata.Code, codedata.Stdin)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": fmt.Sprintf("service error: %s", err.Error())})
 		return
 	}
-	c.JSON(http.StatusAccepted, gin.H{"message": resault})
+	c.JSON(http.StatusAccepted, gin.H{"output": resault})
 }
