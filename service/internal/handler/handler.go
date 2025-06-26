@@ -2,7 +2,6 @@ package handler
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 
 	"go-openoj/service/internal/define"
@@ -18,7 +17,6 @@ func HandleSubmit(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": fmt.Sprintf("bind failed: %s", err)})
 		return
 	}
-	log.Print(codedata)
 	resault, err := service.ServiceSubmit(codedata)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
