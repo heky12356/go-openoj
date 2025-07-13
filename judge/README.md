@@ -31,18 +31,62 @@ make install
 2. 配置isolate
 新建一个用到的文件夹
 ```bash
-mkdir /var/local/lib/isolate
+mkdir /var/lib/isolate 
+#这是下面的box_root路径
+#代码里面硬编码了，如果想改可以改judge/internal/service/service.go中
+# boxPath := "/var/lib/isolate/" + boxID + "/box/"
+# metaPath := "/var/lib/isolate/" + boxID + "/meta.txt"
 ```
 创建配置文件
 ```bash
-cp default.cf.in /usr/local/etc/isolate
+vim /usr/local/etc/isolate
 ```
 
-2. 运行
+粘贴下面的内容：
+```isolate
+# cat /etc/isolate
+# This is a configuration file for Isolate
+
+# All sandboxes are created under this directory.
+# To avoid symlink attacks, this directory and all its ancestors
+# must be writeable only to root.
+box_root = /var/lib/isolate
+
+# Directory where lock files are created.
+lock_root = /run/isolate/locks
+
+# Control group under which we place our subgroups
+# Either an explicit path to a subdirectory in cgroupfs, or "auto:file" to read
+# the path from "file", where it is put by isolate-cg-helper.
+# cg_root = /sys/fs/cgroup/isolate.slice/isolate.service
+cg_root = auto:/run/isolate/cgroup
+
+# Block of UIDs and GIDs reserved for sandboxes
+first_uid = 60000
+first_gid = 60000
+num_boxes = 1000
+
+# Only root can create new sandboxes (default: 0=everybody can)
+#restricted_init = 1
+
+# Per-box settings of the set of allowed CPUs and NUMA nodes
+# (see linux/Documentation/cgroups/cpusets.txt for precise syntax)
+
+#box0.cpus = 4-7
+#box0.mems = 1
+# 
+```
+2. 创建judge需要用到的文件夹
+```bash
+# 在go-openoj根目录下创建
+mkdir ./judge/tmp
+mkdir ./judge/submissions
+```
+3. 运行
 ```bash
 go run ./cmd/main.go
 ```
-
+  
 另，使用docker（不推荐在内网服务器上使用）
 构建镜像：
 ```bash
