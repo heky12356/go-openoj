@@ -40,6 +40,7 @@ mkdir /var/lib/isolate
 创建配置文件
 ```bash
 vim /usr/local/etc/isolate
+# vim的使用可以参考：https://blog.heky.top/index.php/archives/38/
 ```
 
 粘贴下面的内容：
@@ -74,7 +75,6 @@ num_boxes = 1000
 
 #box0.cpus = 4-7
 #box0.mems = 1
-# 
 ```
 2. 创建judge需要用到的文件夹
 ```bash
